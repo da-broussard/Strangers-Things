@@ -1,12 +1,17 @@
-import React from 'react';
+import React from "react";
+import { Link, useHistory } from "react-router-dom";
 
 
-const Navbar =() =>{
+const NavBar= ()=>{
+
     return(
-       
-            <header id='header-nav-bar'>Welcome to Strangers-Things</header>
-        
+        <aside className='site-links'>
+            <Link className='links' to='/post'>See Post</Link>
+            <Link className='links' to='/newpost'>Make A New Post</Link>
+            <Link className='links' to='/register'>Create Account</Link>
+            <Link className='links' to='/profile'>Profile</Link>
+        </aside>
     )
 }
 
-export default Navbar;
+export default NavBar;

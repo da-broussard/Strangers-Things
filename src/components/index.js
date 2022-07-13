@@ -1,2 +1,7 @@
-export {default as Navbar} from './Navbar'
+export {default as Title} from './Title'
 export {default as Post} from './Post'
+export {default as Register} from './Register'
+export {default as Profile} from './Profile'
+export {default as NewPost} from './NewPost'
+export {default as NavBar} from './NavBar'
+export {default as Login} from './Login'
