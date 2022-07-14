@@ -15,3 +15,7 @@ const NavBar= ()=>{
 }
 
 export default NavBar;
+
+
+// For Navbar and links to other paths in project.
+

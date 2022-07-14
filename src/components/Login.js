@@ -4,11 +4,15 @@ import axios from "axios";
 const baseURL =
   "https://strangers-things.herokuapp.com/api/2206-ftb-et-web-ft-b";
 
+
+
+  // Have been working on this to have a user logged in and have token populate. --------------------------------------------------------------------
 const Login = () => {
   const [userLogin, setUserLogin] = useState("");
   const [userPassword, setUserPassword] = useState("");
+//Working on these two states as well. Was planning on trying to go off of demo from friday----------------------------------------------------------
 //   const [userLoggedIn, setUserLoggedIn] = useState(false);
-  const [userToken, setUserToken]= useState('')
+  // const [userToken, setUserToken]= useState('')
   console.log(userLogin);
   console.log(userPassword)
 

@@ -1,3 +1,7 @@
+//This component is pretty much done. Able to get posts to populate. Just going to try and add in some more features if I have time.  
+
+
+
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 

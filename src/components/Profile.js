@@ -4,7 +4,7 @@ import axios from "axios";
 const baseURL =
   "https://strangers-things.herokuapp.com/api/2206-ftb-et-web-ft-b";
 
-
+// Havent really touch this part yet.  Once I figure out issues Im having with other components I should be able to get this.  
 const Profile = () =>{
 
     // const [allMessages, setAllMessages]= useState([]);

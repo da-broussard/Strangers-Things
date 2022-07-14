@@ -1,7 +1,11 @@
 import React, { useState } from "react";
 import axios from "axios";
 
+
+
 const NewPost = () => {
+
+  //State for all required inputs needed to send POST request to API.  Still working on state of willDeliver.  Just need to setup for clickbox
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState("");
@@ -23,11 +27,14 @@ const NewPost = () => {
           // willDeliver: `${willDeliver}`,
         },
       });
+      // Was thinking about adding a THEN statement to have my forms reset of use useEffect to rerender.---------------------------------------------
     } catch (error) {
       console.error(error);
     }
   };
 
+
+  //HTML that I am returning for component. Having states updated as filled in and function to send new post-------------------------------------------------------------------
   return (
     <div className="posts-page">
       <form onSubmit={ addNewPost}>

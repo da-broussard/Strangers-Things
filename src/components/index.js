@@ -5,3 +5,8 @@ export {default as Profile} from './Profile'
 export {default as NewPost} from './NewPost'
 export {default as NavBar} from './NavBar'
 export {default as Login} from './Login'
+
+
+
+
+// This file is strictly to export components to main index.js

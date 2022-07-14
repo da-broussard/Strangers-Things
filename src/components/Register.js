@@ -4,11 +4,16 @@ import axios from "axios";
 const baseURL =
   "https://strangers-things.herokuapp.com/api/2206-ftb-et-web-ft-b";
 
+
+
+
+  // Able to register new user and get token back and saved in local Storage.  Was thinking about having state to save token or using localstorage.getItem
+  // to use when I write code to send new post or messages.   
 const Register = () => {
   const [userName, setUserName] = useState("");
   const [passWord, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  // const [currentUser, setCurrentUser] = useState('');
+  
 
   const addUser = async (event) => {
     event.preventDefault();
@@ -25,6 +30,7 @@ const Register = () => {
         console.log(response.data.data.token);
         
         window.localStorage.setItem('token', response.data.data.token);
+        //Right here I was trying to get my form to reset again, wasthinking of useing useEffect----------------------------------------------------
         setUserName(' ');
         setPassword(' ');
       } catch (err) {
