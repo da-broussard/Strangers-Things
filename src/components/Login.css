@@ -1,0 +1,12 @@
+.main-page-header{
+    display: flex;
+    justify-content: center;
+    background-color: rgb(16, 136, 255);
+    color:white;
+    
+}
+
+.login-field{
+    display: flex;
+    justify-content: center;
+}

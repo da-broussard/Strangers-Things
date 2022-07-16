@@ -1,0 +1,10 @@
+.my-posts{
+    background-color: lightgray;
+    margin-top: 10px;
+    padding: 5px;
+    box-shadow: 5px 5px black;
+}
+.my-posts-buttons{
+    display: flex;
+    justify-content: flex-end;
+}

@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import ReactDOM from "react-dom";
 import { Link, Route, BrowserRouter as Router } from "react-router-dom";
 
@@ -10,22 +10,40 @@ import {
   NavBar,
   Login,
   Profile,
+  SendMessage
 } from "./components";
 
+
 const App = () => {
+
+  const [allPosts, setAllPosts] = useState([]);
+  const [userToken, setUserToken] = useState("");
+ 
+ 
   return (
     <main>
+      <div className='headerNavBar'>
       <Title />
+      <NavBar />
+      </div>
 
       <div className="main-body">
-        <NavBar />
-        <Route exact path="/" component={Login}></Route>
-        <div id='post-page'>
-          <Route path="/post" component={Post} />
-        </div>
+        
+        <Route exact path="/">
+          <Login userToken={userToken} setUserToken={setUserToken}/>
+        </Route>
+       
+          <Route path="/post"> 
+            <Post allPosts={allPosts} setAllPosts={setAllPosts}/>
+          </Route>
+        
         <Route path="/newpost" component={NewPost} />
         <Route path="/register" component={Register} />
-        <Route path="/profile" component={Profile} />
+        <Route path="/profile"  >
+          <Profile userToken={userToken}/>
+        </Route>
+        <Route path='/sendmessage' component={SendMessage}/>
+
       </div>
     </main>
   );

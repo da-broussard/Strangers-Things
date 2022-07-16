@@ -1,11 +1,13 @@
 import React from "react";
-import { Link, useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
+import './NavBar.css';
 
 
 const NavBar= ()=>{
 
     return(
         <aside className='site-links'>
+            <Link className='links' to='/'>Home</Link>
             <Link className='links' to='/post'>See Post</Link>
             <Link className='links' to='/newpost'>Make A New Post</Link>
             <Link className='links' to='/register'>Create Account</Link>
@@ -17,5 +19,5 @@ const NavBar= ()=>{
 export default NavBar;
 
 
-// For Navbar and links to other paths in project.
+// For Navbar and links to other paths in project.-----------------------------------------------------------------------------------------------------
 

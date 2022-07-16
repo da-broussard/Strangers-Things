@@ -1,58 +1,69 @@
 import React, { useState } from "react";
 import axios from "axios";
+import "./Login.css";
 
 const baseURL =
   "https://strangers-things.herokuapp.com/api/2206-ftb-et-web-ft-b";
 
-
-
-  // Have been working on this to have a user logged in and have token populate. --------------------------------------------------------------------
-const Login = () => {
+const Login = ({ userToken, setUserToken }) => {
   const [userLogin, setUserLogin] = useState("");
   const [userPassword, setUserPassword] = useState("");
-//Working on these two states as well. Was planning on trying to go off of demo from friday----------------------------------------------------------
-//   const [userLoggedIn, setUserLoggedIn] = useState(false);
-  // const [userToken, setUserToken]= useState('')
+  // const [userToken, setUserToken] = useState("");
+
   console.log(userLogin);
-  console.log(userPassword)
+  console.log(userPassword);
+  console.log(userToken);
 
   const logInUser = async (event) => {
-    event.preventdefault();
-    try {
-      const response = await axios.get("${baseURL}/users/login", {
+    event.preventDefault();
+    fetch(`${baseURL}/users/login`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
         user: {
           username: userLogin,
           password: userPassword,
         },
-      });
-      console.log(response)
-   
-      window.localStorage.setItem(`token`,  response.data.data.token)
-    } catch (error) {
-        console.error(error)
-    }
+      }),
+    })
+      .then((response) => response.json())
+      .then((result) => {
+        window.localStorage.setItem("token", result.data.token);
+        setUserToken(localStorage.getItem("token"));
+      })
+      .catch(console.error);
   };
 
   return (
-    <div>
-      <form onSubmit={logInUser}>
-        <label>Username</label>
-        <input
-          type="text"
-          required
-          onChange={(event) => setUserLogin(event.target.value)}
-        ></input>
-        <br></br>
-        <label>Password</label>
-        <input
-          type="password"
-          required
-          onChange={(event) => setUserPassword(event.target.value)}
-        ></input>
-        <br></br>
-        <button type="submit">Log In</button>
-      </form>
-    </div>
+    <main>
+      <h1 className="main-page-header">
+        Please login to view posts and see all of the great items listed on
+        STRANGERS THINGS
+      </h1>
+      <div className="login-field">
+        <form onSubmit={logInUser}>
+          <label>Username</label>
+          <br></br>
+          <input
+            type="text"
+            required
+            onChange={(event) => setUserLogin(event.target.value)}
+          ></input>
+          <br></br>
+          <label>Password</label>
+          <br></br>
+          <input
+            type="password"
+            required
+            onChange={(event) => setUserPassword(event.target.value)}
+          ></input>
+          <br></br>
+          <button type="submit">Log In</button>
+        </form>
+      </div>
+    </main>
   );
 };
 

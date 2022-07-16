@@ -1,4 +1,4 @@
-//This component is pretty much done. Able to get posts to populate. Just going to try and add in some more features if I have time.  
+import './Post.css'; 
 
 
 
@@ -8,8 +8,8 @@ import axios from "axios";
 const baseURL =
   "https://strangers-things.herokuapp.com/api/2206-ftb-et-web-ft-b";
 
-const Post = () => {
-  const [allPosts, setAllPosts] = useState([]);
+const Post = ({allPosts, setAllPosts}) => {
+  // const [allPosts, setAllPosts] = useState([]);
 
   useEffect(() => {
     const fetchPosts = async () => {
@@ -25,16 +25,27 @@ const Post = () => {
   }, []);
 
   
-  return allPosts.map((eachPost, idx) => {
-    return (
-      
-      <div key={idx} className="individual-post">
-        <span>Item for sale: </span> <span>{eachPost.title}</span>
-        <p>Item description: {eachPost.description}</p>
-        <p>Item Price: {eachPost.price}</p>
-      </div>
-    );
-  });
+  return (
+    <>
+    <h1>Posts</h1>
+    {allPosts.map((eachPost, idx) => {
+        return (
+          
+          <div key={idx} className="individual-post">
+            <span>Item for sale: </span> <span>{eachPost.title}</span>
+            <p>Item description: {eachPost.description}</p>
+            
+            <p>Item Price: ${eachPost.price}</p>
+            <p>Seller: {eachPost.author.username}</p>
+            <div className='message-button'>
+            <button >Send Seller Message</button>
+            </div>
+          </div>
+        );
+      })}
+    </>
+    )
+  
 };
 
 export default Post;

@@ -1,69 +1,78 @@
-import React, { useState } from "react";
-import axios from "axios";
-
-
+import React, { useState, useEffect } from "react";
+// import axios from "axios";
+import './NewPosts.css'
 
 const NewPost = () => {
-
-  //State for all required inputs needed to send POST request to API.  Still working on state of willDeliver.  Just need to setup for clickbox
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState("");
   const [location, setLocation] = useState("");
   const [willDeliver, setWillDeliver] = useState(false);
+  const [userToken, setUserToken] = useState("");
 
   const baseURL =
     "https://strangers-things.herokuapp.com/api/2206-ftb-et-web-ft-b";
 
+  useEffect(() => {
+    setUserToken(localStorage.getItem("token"));
+    console.log(userToken);
+  }, []);
+
   const addNewPost = async (event) => {
     event.preventDefault();
     try {
-      const response = await axios.post(`${baseURL}/posts`, {
-        post: {
-          title: title,
-          description: description,
-          price: price,
-          location: location,
-          // willDeliver: `${willDeliver}`,
+      await fetch(`${baseURL}/posts`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${userToken}`,
         },
+        body: JSON.stringify({
+          post: {
+            title: title,
+            description: description,
+            price: price,
+            willDeliver: true,
+          },
+        }),
       });
-      // Was thinking about adding a THEN statement to have my forms reset of use useEffect to rerender.---------------------------------------------
     } catch (error) {
       console.error(error);
     }
   };
 
-
-  //HTML that I am returning for component. Having states updated as filled in and function to send new post-------------------------------------------------------------------
   return (
-    <div className="posts-page">
-      <form onSubmit={ addNewPost}>
+    <div className="new-posts-page">
+      <form onSubmit={addNewPost}>
         <div>
           <label>Product Name</label>
-          <input
+          <br></br>
+          <input className='new-posts-inputs'
             type="text"
             onChange={(event) => setTitle(event.target.value)}
           ></input>
         </div>
+        <br></br>
         <div>
           <label>Product Description:</label>
-          <textarea
-            type="textarea"
-            rows="4"
-            cols="10"
+          <br></br>
+          <input className='new-posts-inputs'
+            type="text"
             onChange={(event) => setDescription(event.target.value)}
-          ></textarea>
+          ></input>
         </div>
         <div>
-          <label>Price:</label>
-          <input
+          <label>Price: $</label>
+          <br></br>
+          <input className='new-posts-inputs'
             type="text"
             onChange={(event) => setPrice(event.target.value)}
           ></input>
         </div>
         <div>
           <label>Location</label>
-          <input
+          <br></br>
+          <input className='new-posts-inputs'
             type="text"
             onChange={(event) => setLocation(event.target.value)}
           ></input>
@@ -75,7 +84,9 @@ const NewPost = () => {
             onChange={(event) => setWillDeliver(event.target.value)}
           ></input>
         </div>
+        <div className='new-post-submit'>
         <button type="submit">Submit New Post</button>
+        </div>
       </form>
     </div>
   );

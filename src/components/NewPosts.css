@@ -1,0 +1,21 @@
+.new-posts-page{
+    display: flex;
+    margin-top: 50px;
+    justify-content: center;
+    box-shadow: 5px 5px black;
+
+
+    background-color: lightgray;
+
+}
+
+.new-posts-inputs{
+    border-radius: 5px;
+    margin-top: 5px;
+    
+}
+
+.new-post-submit{
+    display: flex;
+    justify-content: flex-end;
+}
