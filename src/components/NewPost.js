@@ -31,7 +31,7 @@ const NewPost = () => {
           post: {
             title: title,
             description: description,
-            price: price,
+            price: `$${price}`,
             willDeliver: true,
           },
         }),
@@ -62,7 +62,7 @@ const NewPost = () => {
           ></input>
         </div>
         <div>
-          <label>Price: $</label>
+          <label>Price: </label>
           <br></br>
           <input className='new-posts-inputs'
             type="text"

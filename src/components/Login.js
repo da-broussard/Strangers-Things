@@ -5,9 +5,9 @@ import "./Login.css";
 const baseURL =
   "https://strangers-things.herokuapp.com/api/2206-ftb-et-web-ft-b";
 
-const Login = ({ userToken, setUserToken }) => {
-  const [userLogin, setUserLogin] = useState("");
-  const [userPassword, setUserPassword] = useState("");
+const Login = ({ userToken, setUserToken, userLogin, userPassword, setUserLogin, setUserPassword}) => {
+  // const [userLogin, setUserLogin] = useState("");
+  // const [userPassword, setUserPassword] = useState("");
   // const [userToken, setUserToken] = useState("");
 
   console.log(userLogin);
@@ -42,6 +42,8 @@ const Login = ({ userToken, setUserToken }) => {
         Please login to view posts and see all of the great items listed on
         STRANGERS THINGS
       </h1>
+
+      {userToken ? <h1 className='user-statement'>You are currently logged in as {userLogin}</h1> :
       <div className="login-field">
         <form onSubmit={logInUser}>
           <label>Username</label>
@@ -63,6 +65,8 @@ const Login = ({ userToken, setUserToken }) => {
           <button type="submit">Log In</button>
         </form>
       </div>
+      
+    }
     </main>
   );
 };

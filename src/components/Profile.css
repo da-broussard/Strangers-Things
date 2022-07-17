@@ -8,3 +8,13 @@
     display: flex;
     justify-content: flex-end;
 }
+
+.profile-statement{
+    text-align: end ;
+}
+.my-messages{
+    background-color: lightgray;
+    margin-top: 10px;
+    padding: 5px;
+    box-shadow: 5px 5px black;
+}

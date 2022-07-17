@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import './Register.css'
 
 const baseURL =
   "https://strangers-things.herokuapp.com/api/2206-ftb-et-web-ft-b";
@@ -47,6 +48,7 @@ const Register = () => {
       <form onSubmit={addUser}>
         <div className="username-field">
           <label>Username:</label>
+          <br></br>
           <input
             type="text"
             required
@@ -56,13 +58,17 @@ const Register = () => {
         </div>
         <div className="password-field">
           <label>Password:</label>
+          <br></br>
           <input
             type="password"
             required
             minLength={8}
             onChange={(event) => setPassword(event.target.value)}
           ></input>
+          </div>
+          <div>
           <label>Confirm Password</label>
+          <br></br>
           <input
             type="password"
             required
