@@ -18,6 +18,7 @@ const App = () => {
   const [userToken, setUserToken] = useState("");
   const [userLogin, setUserLogin] = useState("");
   const [userPassword, setUserPassword] = useState("");
+  const [willDeliver, setWillDeliver] = useState(false);
 
   return (
     <main>
@@ -39,7 +40,12 @@ const App = () => {
         </Route>
 
         <Route path="/post">
-          <Post allPosts={allPosts} setAllPosts={setAllPosts} />
+          <Post
+            allPosts={allPosts}
+            setAllPosts={setAllPosts}
+            willDeliver={willDeliver}
+            setWillDeliver={setWillDeliver}
+          />
         </Route>
 
         <Route path="/newpost" component={NewPost} />
@@ -51,7 +57,9 @@ const App = () => {
             setUserToken={setUserToken}
           />
         </Route>
-        <Route path="/sendmessage" component={SendMessage} />
+        <Route path="/sendmessage">
+          <SendMessage userLogin={userLogin} allPosts={allPosts} />
+        </Route>
       </div>
     </main>
   );

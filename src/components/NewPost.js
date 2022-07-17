@@ -32,10 +32,11 @@ const NewPost = () => {
             title: title,
             description: description,
             price: `$${price}`,
-            willDeliver: true,
+            willDeliver: willDeliver,
           },
         }),
       });
+      alert("Your Post is now listed on Strangers Things")
     } catch (error) {
       console.error(error);
     }
@@ -81,7 +82,7 @@ const NewPost = () => {
           <label>Will Deliver</label>
           <input
             type="checkbox"
-            onChange={(event) => setWillDeliver(event.target.value)}
+            onClick={()=>setWillDeliver(true)}
           ></input>
         </div>
         <div className='new-post-submit'>

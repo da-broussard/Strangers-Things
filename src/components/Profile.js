@@ -10,7 +10,7 @@ const Profile = ({ userToken, userLogin, setUserToken }) => {
   const [userPosts, setUserPosts] = useState([]);
   const [currentUser, setCurrentUser] = useState("");
 
-  let {_id}= myPosts
+  // let {_id}= myPosts
 
   useEffect(() => {
     const fetchMe = async () => {
@@ -31,10 +31,10 @@ const Profile = ({ userToken, userLogin, setUserToken }) => {
       } catch (error) {}
     };
     fetchMe();
-  }, []);
+  }, [userPosts.active]);
 
-  const deletePost = async () => {
-    const results = await fetch(`${baseURL}/posts/${myPosts._id}`, {
+  const deletePost = async (postID) => {
+    const results = await fetch(`${baseURL}/posts/${postID}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
@@ -45,7 +45,7 @@ const Profile = ({ userToken, userLogin, setUserToken }) => {
       .then((result) => {
         console.log(result);
         alert(`${userPosts.title} had been deleted`);
-        console.log(userPosts._id);
+        console.log();
       })
       .catch(console.error);
   };
@@ -80,15 +80,16 @@ const Profile = ({ userToken, userLogin, setUserToken }) => {
         <h3>You currently do not have any posts</h3>
       ) : (
         userPosts.map((myPosts, idx) => {
-          console.log(myPosts)
+          
           return (
             <div key={idx}  className="my-posts">
               <span>Item for sale: </span> <span>{myPosts.title}</span>
               <p>Item description: {myPosts.description}</p>
               <p>Item Price: ${myPosts.price}</p>
               <div className="my-posts-buttons">
+                {myPosts.active ? <p className='still-active'>This Post is still active</p>: <p className='not-active'>This Post is no longer active</p>}
                 <button>Edit Post</button>
-                <button onClick={deletePost} value={myPosts._id}>Delete Post {myPosts._id}</button>
+                <button onClick={()=>deletePost(myPosts._id)}>Delete Post</button>
               </div>
             </div>
           );

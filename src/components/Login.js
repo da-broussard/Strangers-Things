@@ -6,13 +6,9 @@ const baseURL =
   "https://strangers-things.herokuapp.com/api/2206-ftb-et-web-ft-b";
 
 const Login = ({ userToken, setUserToken, userLogin, userPassword, setUserLogin, setUserPassword}) => {
-  // const [userLogin, setUserLogin] = useState("");
-  // const [userPassword, setUserPassword] = useState("");
-  // const [userToken, setUserToken] = useState("");
+  
 
-  console.log(userLogin);
-  console.log(userPassword);
-  console.log(userToken);
+  
 
   const logInUser = async (event) => {
     event.preventDefault();
