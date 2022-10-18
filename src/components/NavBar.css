@@ -1,12 +1,12 @@
 #header{
     display: flex;
-    background-color:rgb(16, 136, 255);
+    background-color:#607196;
     color:white;
     height:100px;
     font-size: 75px;
     justify-content: center;
     align-items: center;
-    font-family: 'Source Code Pro', monospace;
+    
     border-bottom: 5px solid lightgray;
     
      
@@ -18,7 +18,7 @@
     height:30px;
     display: flex;
     justify-content: space-around;
-    font-family: 'Source Code Pro', monospace;
+    
     
     
     
@@ -29,7 +29,7 @@
     display: flex;
     text-decoration: none;
     font-size: 20px;
-    background-color:rgb(16, 136, 255);
+    background-color:E8E9ED;
     color:white;
     flex-grow: 1;
     justify-content: center;

@@ -1,16 +1,18 @@
 *{
     box-sizing: border-box;
     overflow:auto;
-    font-family: 'Source Code Pro', monospace;
+   
     
 }
 body{
-    background-color:slategray;
+    background-color:#607196;
 }
 
 .headerNavBar{
-    box-shadow: 5px 5px black;
-    border: 5px solid gray;
+    
+    
+    border-radius: 25px;
+
 }
 
     

@@ -33,7 +33,7 @@ const Login = ({ userToken, setUserToken, userLogin, userPassword, setUserLogin,
   };
 
   return (
-    <main>
+    <main className="login-main">
       <h1 className="main-page-header">
         Please login to view posts and see all of the great items listed on
         STRANGERS THINGS
@@ -41,7 +41,7 @@ const Login = ({ userToken, setUserToken, userLogin, userPassword, setUserLogin,
 
       {userToken ? <h1 className='user-statement'>You are currently logged in as {userLogin}</h1> :
       <div className="login-field">
-        <form onSubmit={logInUser}>
+        <form className='login_form' onSubmit={logInUser}>
           <label>Username</label>
           <br></br>
           <input

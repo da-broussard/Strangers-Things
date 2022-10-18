@@ -8,8 +8,7 @@ const baseURL =
 
 
 
-  // Able to register new user and get token back and saved in local Storage.  Was thinking about having state to save token or using localstorage.getItem
-  // to use when I write code to send new post or messages.   
+  
 const Register = () => {
   const [userName, setUserName] = useState("");
   const [passWord, setPassword] = useState("");
@@ -18,6 +17,7 @@ const Register = () => {
 
   const addUser = async (event) => {
     event.preventDefault();
+    
     if (passWord !== confirmPassword) {
       alert("PASSWORDS DO NOT MATCH");
     } else {

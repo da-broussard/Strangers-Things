@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 
 
 import React, { useEffect, useState } from "react";
+import {useNavigate, useParams} from "react-router-dom"
 import axios from "axios";
 
 const baseURL =
@@ -11,7 +12,8 @@ const baseURL =
 
 const Post = ({allPosts, setAllPosts}) => {
   
-  console.log(allPosts)
+  const {id}= useParams();
+  const navigate= useNavigate();
 
   useEffect(() => {
     const fetchPosts = async () => {
@@ -26,7 +28,7 @@ const Post = ({allPosts, setAllPosts}) => {
     
   }, []);
 
-  
+  // console.log(allPosts)
   return (
     <>
     <h1>Posts</h1>
@@ -34,7 +36,7 @@ const Post = ({allPosts, setAllPosts}) => {
         return (
           
           <div key={idx} className="individual-post">
-            <span>Item for sale: </span> <span>{eachPost.title}</span>
+            <span className="post_lead">Item for sale: </span> <span>{eachPost.title}</span>
             <p>Item description: {eachPost.description}</p>
             
             <p>Item Price: ${eachPost.price}</p>
@@ -42,9 +44,9 @@ const Post = ({allPosts, setAllPosts}) => {
             <p>Seller: {eachPost.author.username}</p>
             {eachPost.willDeliver ? <p>Seller willing to deliver</p> : <p>Pick up only</p>}
             <div className='message-button'>
-              <Link to='/sendmessage'>
-            <button >Send Seller Message</button>
-            </Link>
+              
+            <button onClick={()=>navigate(`/${eachPost._id}`)} >Send Seller Message</button>
+            
             </div>
           </div>
         );

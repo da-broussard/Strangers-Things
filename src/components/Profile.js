@@ -52,7 +52,7 @@ const Profile = ({ userToken, userLogin, setUserToken }) => {
 
   return (
     <>
-      {/* {!userToken ? <h2 className='please-login-statement'>Please Login or Create an account to start looking at Strangers Things</h2>: null } */}
+      {!userToken ? <h2 className='please-login-statement'>Please Login or Create an account to start looking at Strangers Things</h2> : null }
       {currentUser ? (
         <h2 className="profile-statement">
           Hello {currentUser}, let's look at strangers things!!{" "}
